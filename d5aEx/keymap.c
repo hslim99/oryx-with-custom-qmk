@@ -100,6 +100,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case MT(MOD_RSFT, KC_L):
+        case MT(MOD_LSFT, KC_S):
+            return 150;
         case MT(MOD_LGUI, KC_A):
         case MT(MOD_LGUI, KC_SCLN):
             return 350;
