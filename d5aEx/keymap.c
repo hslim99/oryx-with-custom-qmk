@@ -3,16 +3,16 @@
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
-#define __A MT(MOD_LGUI, KC_A)
-#define __S MT(MOD_LSFT, KC_S)
-#define __D MT(MOD_LCTL, KC_D)
-#define __F MT(MOD_LSFT, KC_F)
-#define __G MT(MOD_LALT, KC_G)
-#define __H MT(MOD_LALT, KC_H)
-#define __J MT(MOD_RSFT, KC_J)
-#define __K MT(MOD_LCTL, KC_K)
-#define __L MT(MOD_RSFT, KC_L)
-#define __SCLN MT(MOD_LGUI, KC_SCLN)
+#define MT(MOD_LGUI, KC_A) MT(MOD_LGUI, KC_A)
+#define MT(MOD_LSFT, KC_S) MT(MOD_LSFT, KC_S)
+#define MT(MOD_LCTL, KC_D) MT(MOD_LCTL, KC_D)
+#define MT(MOD_LSFT, KC_F) MT(MOD_LSFT, KC_F)
+#define MT(MOD_LALT, KC_G) MT(MOD_LALT, KC_G)
+#define MT(MOD_LALT, KC_H) MT(MOD_LALT, KC_H)
+#define MT(MOD_RSFT, KC_J) MT(MOD_RSFT, KC_J)
+#define MT(MOD_LCTL, KC_K) MT(MOD_LCTL, KC_K)
+#define MT(MOD_RSFT, KC_L) MT(MOD_RSFT, KC_L)
+#define MT(MOD_LGUI, KC_SCLN) MT(MOD_LGUI, KC_SCLN)
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_TRANSPARENT,
-    KC_TRANSPARENT, __A,            __S,            __D,            __F,            __G,            KC_TRANSPARENT,                                 KC_TRANSPARENT, __H,            __J,            __K,            __L,            __SCLN,         KC_TRANSPARENT,
+    KC_TRANSPARENT, MT(MOD_LGUI, KC_A),MT(MOD_LSFT, KC_S),MT(MOD_LCTL, KC_D),MT(MOD_LSFT, KC_F),MT(MOD_LALT, KC_G),KC_TRANSPARENT,                                 KC_TRANSPARENT, MT(MOD_LALT, KC_H),MT(MOD_RSFT, KC_J),MT(MOD_LCTL, KC_K),MT(MOD_RSFT, KC_L),MT(MOD_LGUI, KC_SCLN),KC_TRANSPARENT,
     KC_TRANSPARENT, KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LT(1,KC_ESCAPE),LT(2,KC_SPACE), KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, LT(4,KC_BSPC),  LT(3,KC_RIGHT_ALT),KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     LT(2,KC_TAB),   KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, LT(4,KC_ENTER)
@@ -65,13 +65,13 @@ const uint16_t PROGMEM combo0[] = { KC_W, KC_E,     COMBO_END}; // (
 const uint16_t PROGMEM combo1[] = { KC_E, KC_R,     COMBO_END}; // )
 const uint16_t PROGMEM combo2[] = { KC_X, KC_C,     COMBO_END}; // [
 const uint16_t PROGMEM combo3[] = { KC_V, KC_C,     COMBO_END}; // ]
-const uint16_t PROGMEM combo4[] = { __S, __D,     COMBO_END}; // {
-const uint16_t PROGMEM combo5[] = { __D, __F,     COMBO_END}; // }
-const uint16_t PROGMEM combo6[] = { __L, __SCLN,  COMBO_END}; // '
+const uint16_t PROGMEM combo4[] = { MT(MOD_LSFT, KC_S), MT(MOD_LCTL, KC_D),     COMBO_END}; // {
+const uint16_t PROGMEM combo5[] = { MT(MOD_LCTL, KC_D), MT(MOD_LSFT, KC_F),     COMBO_END}; // }
+const uint16_t PROGMEM combo6[] = { MT(MOD_RSFT, KC_L), MT(MOD_LGUI, KC_SCLN),  COMBO_END}; // '
 const uint16_t PROGMEM combo7[] = { KC_O, KC_P,     COMBO_END}; // \
-const uint16_t PROGMEM combo8[] = { __K, __L,     COMBO_END}; // =
+const uint16_t PROGMEM combo8[] = { MT(MOD_LCTL, KC_K), MT(MOD_RSFT, KC_L),     COMBO_END}; // =
 const uint16_t PROGMEM combo9[] = { KC_Q, KC_W,     COMBO_END}; // `
-const uint16_t PROGMEM combo10[] = { __J, __K,    COMBO_END}; // -
+const uint16_t PROGMEM combo10[] = { MT(MOD_RSFT, KC_J), MT(MOD_LCTL, KC_K),    COMBO_END}; // -
 const uint16_t PROGMEM combo11[] = { KC_M, KC_COMMA,    COMBO_END}; // <
 const uint16_t PROGMEM combo12[] = { KC_COMMA, KC_DOT,  COMBO_END}; // >
 const uint16_t PROGMEM combo13[] = { KC_R, KC_T,    COMBO_END}; // backspace
@@ -111,13 +111,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case __S:
-        case __F:
-        case __J:
-        case __L:
+        case MT(MOD_LSFT, KC_S):
+        case MT(MOD_LSFT, KC_F):
+        case MT(MOD_RSFT, KC_J):
+        case MT(MOD_RSFT, KC_L):
             return 150;
-        case __A:
-        case __SCLN:
+        case MT(MOD_LGUI, KC_A):
+        case MT(MOD_LGUI, KC_SCLN):
             return 350;
         default:
             return TAPPING_TERM;
@@ -127,11 +127,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case __J:
+        case MT(MOD_RSFT, KC_J):
             return 45;
-        case __S:
-        case __F:
-        case __L:
+        case MT(MOD_LSFT, KC_S):
+        case MT(MOD_LSFT, KC_F):
+        case MT(MOD_RSFT, KC_L):
         case LT(4,KC_BSPC):
             return 70;
         default:
