@@ -3,17 +3,6 @@
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
-#define MT(MOD_LGUI, KC_A) MT(MOD_LGUI, KC_A)
-#define MT(MOD_LSFT, KC_S) MT(MOD_LSFT, KC_S)
-#define MT(MOD_LCTL, KC_D) MT(MOD_LCTL, KC_D)
-#define MT(MOD_LSFT, KC_F) MT(MOD_LSFT, KC_F)
-#define MT(MOD_LALT, KC_G) MT(MOD_LALT, KC_G)
-#define MT(MOD_LALT, KC_H) MT(MOD_LALT, KC_H)
-#define MT(MOD_RSFT, KC_J) MT(MOD_RSFT, KC_J)
-#define MT(MOD_LCTL, KC_K) MT(MOD_LCTL, KC_K)
-#define MT(MOD_RSFT, KC_L) MT(MOD_RSFT, KC_L)
-#define MT(MOD_LGUI, KC_SCLN) MT(MOD_LGUI, KC_SCLN)
-
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
 };
