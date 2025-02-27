@@ -83,6 +83,16 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 
 
+uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
+    switch (combo->keycode) {
+        case KC_GRAVE:
+            return 75;
+    }
+
+    return COMBO_TERM;
+}
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case RGB_SLD:
