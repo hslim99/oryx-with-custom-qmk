@@ -113,7 +113,7 @@ uint16_t get_tap_key(uint16_t keycode) {
 bool prevent_ctrl_hold(uint16_t tap_key, keyrecord_t *record) {
     if (record->event.pressed) {
         if (timer_elapsed(last_keypress_time) <= CTRL_HOLD_TIME) {
-            tap_code16(tap_key);
+            register_code(tap_key);
             last_keypress_time = timer_read();
             return true;
         }
