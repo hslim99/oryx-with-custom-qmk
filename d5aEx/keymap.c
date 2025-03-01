@@ -110,13 +110,15 @@ uint16_t get_tap_key(uint16_t keycode) {
 }
 
 
-void prevent_ctrl_hold(uint16_t tap_key, keyrecord_t *record) {
+bool prevent_ctrl_hold(uint16_t tap_key, keyrecord_t *record) {
     if (record->event.pressed) {
         if (timer_elapsed(last_keypress_time) <= CTRL_HOLD_TIME) {
             tap_code16(tap_key);
             last_keypress_time = timer_read();
+            return true;
         }
     }
+    return false;
 }
 
 
@@ -124,7 +126,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT(MOD_LCTL, KC_D):
         case MT(MOD_LCTL, KC_K):
-            prevent_ctrl_hold(get_tap_key(keycode), record);
+            bool prevented = prevent_ctrl_hold(get_tap_key(keycode), record);
+            if (prevented) {
+                return false;
+            }
     }
 
     if (record->event.pressed && record->event.key.row <= 3) {
