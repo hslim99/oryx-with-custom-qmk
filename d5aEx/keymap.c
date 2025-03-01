@@ -99,10 +99,21 @@ uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
 static uint16_t last_keypress_time = 0;
 
 
-bool prevent_ctrl_hold(uint16_t keycode, keyrecord_t *record) {
+uint16_t get_tap_key(uint16_t keycode) {
+    switch (keycode) {
+        case MT(MOD_LCTL, KC_D):
+            return KC_D;
+        case MT(MOD_LCTL, KC_K):
+            return KC_K;
+    }
+    return keycode;
+}
+
+
+bool prevent_ctrl_hold(uint16_t tap_key, keyrecord_t *record) {
     if (record->event.pressed) {
         if (timer_elapsed(last_keypress_time) <= CTRL_HOLD_TIME) {
-            tap_code16(keycode);
+            tap_code16(tap_key);
             last_keypress_time = timer_read();
             return true;
         }
@@ -115,7 +126,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT(MOD_LCTL, KC_D):
         case MT(MOD_LCTL, KC_K):
-            bool prevented = prevent_ctrl_hold(keycode, record);
+            bool prevented = prevent_ctrl_hold(get_tap_key(keycode), record);
             if (prevented) {
                 return false;
             }
