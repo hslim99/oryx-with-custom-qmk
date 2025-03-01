@@ -85,6 +85,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
 uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
     switch (combo->keycode) {
+        case KC_QUOTE:
         case KC_GRAVE:
             return 75;
     }
@@ -116,9 +117,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_RSFT, KC_L):
             return 125;
         case MT(MOD_LALT, KC_H):
+            return 350;
         case MT(MOD_LGUI, KC_A):
         case MT(MOD_LGUI, KC_SCLN):
-            return 350;
+            return 500;
         default:
             return TAPPING_TERM;
     }
