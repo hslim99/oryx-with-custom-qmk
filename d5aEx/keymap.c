@@ -1,9 +1,8 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "quantum.h"
+#include "achordion.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
-#define CTRL_HOLD_TIME 100
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -96,43 +95,7 @@ uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
 }
 
 
-static uint16_t last_keypress_time = 0;
-
-
-uint16_t get_tap_key(uint16_t keycode) {
-    switch (keycode) {
-        case MT(MOD_LCTL, KC_D):
-            return KC_D;
-        case MT(MOD_LCTL, KC_K):
-            return KC_K;
-    }
-    return keycode;
-}
-
-
-bool prevent_ctrl_hold(uint16_t tap_key, keyrecord_t *record) {
-    if (record->event.pressed) {
-        if (timer_elapsed(last_keypress_time) <= CTRL_HOLD_TIME) {
-            register_code(tap_key);
-            last_keypress_time = timer_read();
-            return false;
-        }
-    }
-    return true;
-}
-
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LCTL, KC_D):
-        case MT(MOD_LCTL, KC_K):
-            return prevent_ctrl_hold(get_tap_key(keycode), record);
-    }
-
-    if (record->event.pressed && record->event.key.row <= 3) {
-        last_keypress_time = timer_read();
-    }
-
     if (keycode == RGB_SLD) {
         if (rawhid_state.rgb_control) {
             return false;
@@ -182,6 +145,16 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     return record->event.key.row >= 4;
+}
+
+
+uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
+    switch (tap_hold_keycode) {
+        case MT(MOD_LCTL, KC_D):
+        case MT(MOD_LCTL, KC_K):
+            return 0;
+    }
+    return 100;
 }
 
 
