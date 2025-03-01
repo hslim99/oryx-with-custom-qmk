@@ -99,7 +99,7 @@ uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
 static uint16_t last_keypress_time = 0;
 
 
-bool prevent_ctrl_hold(uint16_t keycode, keyrecord_t *record, uint16_t now) {
+void prevent_ctrl_hold(uint16_t keycode, keyrecord_t *record, uint16_t now) {
     if (record->event.pressed) {
         if (now - last_keypress_time <= CTRL_HOLD_TIME) {
             unregister_code(keycode);
