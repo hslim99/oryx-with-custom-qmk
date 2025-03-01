@@ -103,6 +103,7 @@ bool prevent_ctrl_hold(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         if (timer_elapsed(last_keypress_time) <= CTRL_HOLD_TIME) {
             tap_code16(keycode);
+            last_keypress_time = timer_read();
             return true;
         }
     }
