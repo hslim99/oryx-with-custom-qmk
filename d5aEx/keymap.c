@@ -149,8 +149,10 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
     switch (tap_hold_keycode) {
-        case MT(MOD_LCTL, KC_D):
-        case MT(MOD_LCTL, KC_K):
+        case MT(MOD_LSFT, KC_S):
+        case MT(MOD_LSFT, KC_F):
+        case MT(MOD_RSFT, KC_J):
+        case MT(MOD_RSFT, KC_L):
             return 0;
     }
     return 100;
