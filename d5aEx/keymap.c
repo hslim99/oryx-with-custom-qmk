@@ -127,9 +127,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_LCTL, KC_D):
         case MT(MOD_LCTL, KC_K):
             bool prevented = prevent_ctrl_hold(get_tap_key(keycode), record);
-            if (prevented) {
-                return false;
-            }
+//            if (prevented) {
+//                return false;
+//            }
     }
 
     if (record->event.pressed && record->event.key.row <= 3) {
