@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "print.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
@@ -14,7 +15,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_TRANSPARENT,
     KC_TRANSPARENT, MT(MOD_LGUI, KC_A),MT(MOD_LSFT, KC_S),MT(MOD_LCTL, KC_D),MT(MOD_LSFT, KC_F),MT(MOD_LALT, KC_G),KC_TRANSPARENT,                                 KC_TRANSPARENT, MT(MOD_LALT, KC_H),MT(MOD_RSFT, KC_J),MT(MOD_LCTL, KC_K),MT(MOD_RSFT, KC_L),MT(MOD_LGUI, KC_SCLN),KC_TRANSPARENT,
     KC_TRANSPARENT, KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LT(1,KC_ESCAPE),LT(2,KC_SPACE), KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, LT(4,KC_BSPC),  LT(3,KC_RIGHT_ALT),KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LT(1,KC_ESCAPE),LT(2,KC_SPACE), DB_TOGG,                                                                                                        KC_TRANSPARENT, LT(4,KC_BSPC),  LT(3,KC_RIGHT_ALT),KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     LT(2,KC_TAB),   KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, LT(4,KC_ENTER)
   ),
   [1] = LAYOUT_moonlander(
@@ -95,6 +96,7 @@ uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    dprintf("KL: row: %u, column: %u, pressed: %u\n", record->event.key.col, record->event.key.row, record->event.pressed);
     if (keycode == RGB_SLD) {
         if (rawhid_state.rgb_control) {
             return false;
