@@ -1,14 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "quantum.h"
-#include "features/achordion.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
-
-void housekeeping_task_user(void) {
-  achordion_task();
-}
-
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -156,20 +149,20 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
-    return true;
+char chordal_hold_handedness(keypos_t key) {
+    return '*';
 }
 
 
-uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     switch (tap_hold_keycode) {
         case MT(MOD_LSFT, KC_S):
         case MT(MOD_LSFT, KC_F):
         case MT(MOD_RSFT, KC_J):
         case MT(MOD_RSFT, KC_L):
-            return 0;
+            return true;
     }
-    return 100;
+    return get_chordal_hold_default(tap_hold_record, other_record);
 }
 
 
