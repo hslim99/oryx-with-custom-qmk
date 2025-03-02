@@ -150,10 +150,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 
 
 char chordal_hold_handedness(keypos_t key) {
-    if (key.row % 6 <= 3) {
-        return 'L';
-    }
-    return key.row < 6 ? 'L' : 'R';
+    return 'L';
 }
 
 
