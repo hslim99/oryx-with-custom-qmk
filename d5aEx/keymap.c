@@ -95,8 +95,6 @@ uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_achordion(keycode, record)) { return false; }
-
     if (keycode == RGB_SLD) {
         if (rawhid_state.rgb_control) {
             return false;
