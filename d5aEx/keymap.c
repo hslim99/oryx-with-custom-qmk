@@ -54,10 +54,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [5] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_NO,          KC_7,           KC_8,           KC_9,           KC_BSPC,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LALT(KC_PSCR), LGUI(LSFT(KC_S)), KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_NO,          KC_4,           KC_5,           KC_6,           KC_NO,          KC_TRANSPARENT,                                                                 KC_TRANSPARENT, LALT(KC_TAB),   LCTL(KC_TAB),   KC_LEFT_CTRL,   KC_RIGHT_SHIFT, KC_LEFT_GUI,    KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_NO,          KC_7,           KC_8,           KC_9,           KC_BSPC,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       LGUI(LSFT(KC_S)), KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_NO,          KC_4,           KC_5,           KC_6,           KC_NO,          KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TAB        , KC_LEFT_ALT,   KC_LEFT_CTRL,   KC_RIGHT_SHIFT, KC_LEFT_GUI,    KC_TRANSPARENT,
     KC_TRANSPARENT, KC_DOT,         KC_1,           KC_2,           KC_3,           KC_0,                                           LSFT(KC_DELETE),          LCTL(KC_V),     LCTL(KC_C),     LCTL(KC_X),     LCTL(KC_Z),     KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_ESCAPE,      KC_SPACE,       KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_ESCAPE,      KC_SPACE,       KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_BSPC,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TAB,         KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
