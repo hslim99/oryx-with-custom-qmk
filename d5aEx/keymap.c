@@ -156,7 +156,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    return record->event.key.row % 6 >= 4;
+    return record->event.key.row % 6 >= 4 || keycode == MT(MOD_LCTL, KC_D);
 }
 
 
