@@ -171,6 +171,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
         case MT(MOD_LSFT, KC_F):
         case MT(MOD_RSFT, KC_J):
         case MT(MOD_RSFT, KC_L):
+        case MT(MOD_LCTL, KC_D):
             return true;
     }
     if (tap_hold_record->event.key.row % 6 >= 4) {
