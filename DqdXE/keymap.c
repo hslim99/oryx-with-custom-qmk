@@ -4,16 +4,7 @@
 #define ML_SAFE_RANGE SAFE_RANGE
 
 enum custom_keycodes {
-  RGB_SLD = ML_SAFE_RANGE,
-  ST_MACRO_0,
-  ST_MACRO_1,
-  ST_MACRO_2,
-  ST_MACRO_3,
-  ST_MACRO_4,
-  ST_MACRO_5,
-  ST_MACRO_6,
-  ST_MACRO_7,
-  ST_MACRO_8,
+  RGB_SLD = ML_SAFE_RANGE
 };
 
 
@@ -38,8 +29,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [2] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_INSERT,      KC_HOME,        KC_CAPS,        KC_PAGE_UP,     KC_PSCR,        KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_LEFT_SHIFT,  KC_LEFT_ALT,                                    KC_DELETE,      KC_END,         KC_UP,          KC_PGDN,        ST_MACRO_0,     KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 ST_MACRO_1,     KC_LEFT,        KC_DOWN,        KC_RIGHT,       ST_MACRO_2,     KC_RIGHT_ALT,   
+    KC_TRANSPARENT, KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_LEFT_SHIFT,  KC_LEFT_ALT,                                    KC_DELETE,      KC_END,         KC_UP,          KC_PGDN,        LALT(KC_PSCR),  KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 LSFT(KC_DELETE), KC_LEFT,       KC_DOWN,        KC_RIGHT,       LGUI(LSFT(KC_S)), KC_RIGHT_ALT,
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_ENTER,       KC_BSPC
   ),
   [3] = LAYOUT_voyager(
@@ -58,27 +49,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [5] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_NO,          KC_7,           KC_8,           KC_9,           KC_BSPC,                                        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       ST_MACRO_3,     KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_NO,          KC_7,           KC_8,           KC_9,           KC_BSPC,                                        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       LGUI(LSFT(KC_S)), KC_TRANSPARENT,
     KC_TRANSPARENT, KC_NO,          KC_4,           KC_5,           KC_6,           KC_NO,                                          KC_TAB,         KC_LEFT_ALT,    KC_LEFT_CTRL,   KC_RIGHT_SHIFT, KC_LEFT_GUI,    KC_TRANSPARENT, 
-    KC_ESCAPE,      KC_DOT,         KC_1,           KC_2,           KC_3,           KC_0,                                           ST_MACRO_4,     ST_MACRO_5,     ST_MACRO_6,     ST_MACRO_7,     ST_MACRO_8,     KC_TRANSPARENT, 
+    KC_ESCAPE,      KC_DOT,         KC_1,           KC_2,           KC_3,           KC_0,                                           LSFT(KC_DELETE), LCTL(KC_V),    LCTL(KC_C),     LCTL(KC_X),     LCTL(KC_Z),     KC_TRANSPARENT,
                                                     KC_SPACE,       KC_TAB,                                         KC_TRANSPARENT, KC_BSPC
   ),
 };
 
-const uint16_t PROGMEM combo0[] = { KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM combo1[] = { KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM combo2[] = { MT(MOD_LSFT, KC_S), MT(MOD_LCTL, KC_D), COMBO_END};
-const uint16_t PROGMEM combo3[] = { MT(MOD_LCTL, KC_D), MT(MOD_LSFT, KC_F), COMBO_END};
-const uint16_t PROGMEM combo4[] = { KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM combo5[] = { KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM combo6[] = { MT(MOD_RSFT, KC_L), MT(MOD_LGUI, KC_SCLN), COMBO_END};
-const uint16_t PROGMEM combo7[] = { KC_O, KC_P, COMBO_END};
-const uint16_t PROGMEM combo8[] = { MT(MOD_LCTL, KC_K), MT(MOD_RSFT, KC_L), COMBO_END};
-const uint16_t PROGMEM combo9[] = { MT(MOD_RSFT, KC_J), MT(MOD_LCTL, KC_K), COMBO_END};
-const uint16_t PROGMEM combo10[] = { KC_W, KC_Q, COMBO_END};
-const uint16_t PROGMEM combo11[] = { KC_M, KC_COMMA, COMBO_END};
-const uint16_t PROGMEM combo12[] = { KC_COMMA, KC_DOT, COMBO_END};
-const uint16_t PROGMEM combo13[] = { KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM combo0[] = { KC_W, KC_E, COMBO_END}; // (
+const uint16_t PROGMEM combo1[] = { KC_E, KC_R, COMBO_END}; // )
+const uint16_t PROGMEM combo2[] = { MT(MOD_LSFT, KC_S), MT(MOD_LCTL, KC_D), COMBO_END}; // {
+const uint16_t PROGMEM combo3[] = { MT(MOD_LCTL, KC_D), MT(MOD_LSFT, KC_F), COMBO_END}; // }
+const uint16_t PROGMEM combo4[] = { KC_X, KC_C, COMBO_END}; // [
+const uint16_t PROGMEM combo5[] = { KC_C, KC_V, COMBO_END}; // ]
+const uint16_t PROGMEM combo6[] = { MT(MOD_RSFT, KC_L), MT(MOD_LGUI, KC_SCLN), COMBO_END}; // '
+const uint16_t PROGMEM combo7[] = { KC_O, KC_P, COMBO_END}; // backslash
+const uint16_t PROGMEM combo8[] = { MT(MOD_LCTL, KC_K), MT(MOD_RSFT, KC_L), COMBO_END}; // =
+const uint16_t PROGMEM combo9[] = { MT(MOD_RSFT, KC_J), MT(MOD_LCTL, KC_K), COMBO_END}; // -
+const uint16_t PROGMEM combo10[] = { KC_Q, KC_W, COMBO_END}; // `
+const uint16_t PROGMEM combo11[] = { KC_M, KC_COMMA, COMBO_END}; // <
+const uint16_t PROGMEM combo12[] = { KC_COMMA, KC_DOT, COMBO_END}; // >
+const uint16_t PROGMEM combo13[] = { KC_R, KC_T, COMBO_END}; // backspace
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_LPRN),
@@ -98,78 +89,102 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 
 
+uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
+    switch (combo->keycode) {
+        case KC_QUOTE:
+        case KC_GRAVE:
+            return 75;
+    }
+
+    return COMBO_TERM;
+}
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case ST_MACRO_0:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_PSCR)));
-    }
-    break;
-    case ST_MACRO_1:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_DELETE)));
-    }
-    break;
-    case ST_MACRO_2:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LGUI(SS_LSFT(SS_TAP(X_S))));
-    }
-    break;
-    case ST_MACRO_3:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LGUI(SS_LSFT(SS_TAP(X_S))));
-    }
-    break;
-    case ST_MACRO_4:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_DELETE)));
-    }
-    break;
-    case ST_MACRO_5:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_V)));
-    }
-    break;
-    case ST_MACRO_6:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_C)));
-    }
-    break;
-    case ST_MACRO_7:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_X)));
-    }
-    break;
-    case ST_MACRO_8:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL(SS_TAP(X_Z)));
-    }
-    break;
-
-    case DUAL_FUNC_0:
-      if (record->tap.count > 0) {
-        if (record->event.pressed) {
-          register_code16(KC_RIGHT_ALT);
-        } else {
-          unregister_code16(KC_RIGHT_ALT);
-        }
-      } else {
-        if (record->event.pressed) {
-          layer_on(3);
-        } else {
-          layer_off(3);
-        }  
-      }  
-      return false;
+    dprintf("KL: row: %u, column: %u, pressed: %u\n", record->event.key.row, record->event.key.col, record->event.pressed);
+    switch (keycode) {
+        case DUAL_FUNC_0:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RIGHT_ALT);
+                } else {
+                    unregister_code16(KC_RIGHT_ALT);
+                }
+            } else {
+                if (record->event.pressed) {
+                    layer_on(3);
+                } else {
+                    layer_off(3);
+                }
+            }
+            return false;
     case RGB_SLD:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-      }
-      return false;
-  }
-  return true;
+        if (record->event.pressed) {
+            rgblight_mode(1);
+        }
+        return false;
+    }
+
+    return true;
 }
+
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT(MOD_LSFT, KC_S):
+        case MT(MOD_LSFT, KC_F):
+        case MT(MOD_RSFT, KC_J):
+        case MT(MOD_RSFT, KC_L):
+            return 130;
+        case MT(MOD_LALT, KC_H):
+        case MT(MOD_LGUI, KC_A):
+        case MT(MOD_LGUI, KC_SCLN):
+            return 350;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
+
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT(MOD_RSFT, KC_J):
+            return 45;
+        case MT(MOD_LSFT, KC_S):
+        case MT(MOD_LSFT, KC_F):
+        case MT(MOD_RSFT, KC_L):
+        case LT(4,KC_BSPC):
+            return 70;
+        default:
+            return QUICK_TAP_TERM;
+    }
+}
+
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    return record->event.key.row % 6 >= 4 || keycode == MT(MOD_LCTL, KC_D) || keycode == MT(MOD_LGUI, KC_A);
+}
+
+
+char chordal_hold_handedness(keypos_t key) {
+    return 'L';
+}
+
+
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+    switch (tap_hold_keycode) {
+        case MT(MOD_LSFT, KC_S):
+        case MT(MOD_LSFT, KC_F):
+        case MT(MOD_RSFT, KC_J):
+        case MT(MOD_RSFT, KC_L):
+        case MT(MOD_LCTL, KC_D):
+            return true;
+    }
+    if (tap_hold_record->event.key.row % 6 >= 4) {
+        return true;
+    }
+    return get_chordal_hold_default(tap_hold_record, other_record);
+}
+
 
 
