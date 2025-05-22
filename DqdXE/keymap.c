@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "print.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
@@ -7,16 +8,12 @@ enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE
 };
 
-
-
-#define DUAL_FUNC_0 LT(23, KC_B)
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_TRANSPARENT, 
     KC_TRANSPARENT, MT(MOD_LGUI, KC_A),MT(MOD_LSFT, KC_S),MT(MOD_LCTL, KC_D),MT(MOD_LSFT, KC_F),MT(MOD_LALT, KC_G),                                MT(MOD_LALT, KC_H),MT(MOD_RSFT, KC_J),MT(MOD_LCTL, KC_K),MT(MOD_RSFT, KC_L),MT(MOD_LGUI, KC_SCLN),KC_TRANSPARENT, 
-    LT(1, KC_ESCAPE),KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       DUAL_FUNC_0,    
+    LT(1, KC_ESCAPE),KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       LT(3,KC_RIGHT_ALT),    
                                                     LT(2, KC_SPACE),LT(2, KC_TAB),                                  LT(5, KC_ENTER),LT(4, KC_BSPC)
   ),
   [1] = LAYOUT_voyager(
@@ -70,6 +67,7 @@ const uint16_t PROGMEM combo10[] = { KC_Q, KC_W, COMBO_END}; // `
 const uint16_t PROGMEM combo11[] = { KC_M, KC_COMMA, COMBO_END}; // <
 const uint16_t PROGMEM combo12[] = { KC_COMMA, KC_DOT, COMBO_END}; // >
 const uint16_t PROGMEM combo13[] = { KC_R, KC_T, COMBO_END}; // backspace
+const uint16_t PROGMEM combo14[] = { KC_F1, KC_F5, KC_F9, COMBO_END}; // DB_TOGG
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_LPRN),
@@ -86,6 +84,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo11, KC_LABK),
     COMBO(combo12, KC_RABK),
     COMBO(combo13, KC_BSPC),
+    COMBO(combo14, DB_TOGG),
 };
 
 
@@ -102,23 +101,10 @@ uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     dprintf("KL: row: %u, column: %u, pressed: %u\n", record->event.key.row, record->event.key.col, record->event.pressed);
-    switch (keycode) {
-        case DUAL_FUNC_0:
-            if (record->tap.count > 0) {
-                if (record->event.pressed) {
-                    register_code16(KC_RIGHT_ALT);
-                } else {
-                    unregister_code16(KC_RIGHT_ALT);
-                }
-            } else {
-                if (record->event.pressed) {
-                    layer_on(3);
-                } else {
-                    layer_off(3);
-                }
-            }
+    if (keycode == RGB_SLD) {
+        if (rawhid_state.rgb_control) {
             return false;
-    case RGB_SLD:
+        }
         if (record->event.pressed) {
             rgblight_mode(1);
         }
@@ -162,7 +148,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    return record->event.key.row % 6 >= 4 || keycode == MT(MOD_LCTL, KC_D) || keycode == MT(MOD_LGUI, KC_A);
+    return record->event.key.row % 5 >= 4 || keycode == MT(MOD_LCTL, KC_D) || keycode == MT(MOD_LGUI, KC_A);
 }
 
 
@@ -180,7 +166,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
         case MT(MOD_LCTL, KC_D):
             return true;
     }
-    if (tap_hold_record->event.key.row % 6 >= 4) {
+    if (tap_hold_record->event.key.row % 5 >= 4) {
         return true;
     }
     return get_chordal_hold_default(tap_hold_record, other_record);
