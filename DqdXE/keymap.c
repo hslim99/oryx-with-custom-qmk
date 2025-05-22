@@ -148,7 +148,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    return record->event.key.row % 5 >= 4 || keycode == MT(MOD_LCTL, KC_D) || keycode == MT(MOD_LGUI, KC_A);
+    return record->event.key.row % 6 >= 4 || keycode == MT(MOD_LCTL, KC_D) || keycode == MT(MOD_LGUI, KC_A);
 }
 
 
@@ -166,7 +166,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
         case MT(MOD_LCTL, KC_D):
             return true;
     }
-    if (tap_hold_record->event.key.row % 5 >= 4) {
+    if (tap_hold_record->event.key.row % 6 >= 4) {
         return true;
     }
     return get_chordal_hold_default(tap_hold_record, other_record);
