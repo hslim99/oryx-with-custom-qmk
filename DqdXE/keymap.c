@@ -51,6 +51,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESCAPE,      KC_DOT,         KC_1,           KC_2,           KC_3,           KC_0,                                           LSFT(KC_DELETE), LCTL(KC_V),    LCTL(KC_C),     LCTL(KC_X),     LCTL(KC_Z),     KC_TRANSPARENT,
                                                     KC_SPACE,       KC_TAB,                                         KC_TRANSPARENT, KC_BSPC
   ),
+  [6] = LAYOUT_voyager(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        KC_TRANSPARENT,
+    MOD_LSFT,       KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       MOD_RSFT,
+                                                    KC_SPACE,       KC_TAB,                                         KC_ENTER,       KC_BSPC
+  ),
 };
 
 const uint16_t PROGMEM combo0[] = { KC_W, KC_E, COMBO_END}; // (
@@ -69,6 +76,8 @@ const uint16_t PROGMEM combo12[] = { KC_COMMA, KC_DOT, COMBO_END}; // >
 const uint16_t PROGMEM combo13[] = { KC_R, KC_T, COMBO_END}; // backspace
 const uint16_t PROGMEM combo14[] = { KC_F1, KC_F5, KC_F9, COMBO_END}; // DB_TOGG
 const uint16_t PROGMEM combo15[] = { KC_F3, KC_F5, KC_F7, COMBO_END}; // RGB_TOG
+const uint16_t PROGMEM combo16[] = { KC_E, MT(MOD_LSFT, KC_S), KC_Z, KC_U, MT(MOD_LCTL, KC_K), KC_DOT, COMBO_END}; // Toggle to game
+const uint16_t PROGMEM combo17[] = { KC_E, KC_S, KC_Z, KC_U, KC_K, KC_DOT, COMBO_END}; // Toggle to default
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_LPRN),
@@ -87,6 +96,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo13, KC_BSPC),
     COMBO(combo14, DB_TOGG),
     COMBO(combo15, RGB_TOG),
+    COMBO(combo16, TO(6)),
+    COMBO(combo17, TO(0)),
 };
 
 
