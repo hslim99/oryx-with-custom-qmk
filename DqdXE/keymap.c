@@ -109,6 +109,7 @@ const uint16_t PROGMEM combo12[] = { KC_COMMA, KC_DOT, COMBO_END}; // >
 const uint16_t PROGMEM combo13[] = { KC_R, KC_T, COMBO_END}; // backspace
 const uint16_t PROGMEM combo14[] = { KC_F1, KC_F5, KC_F9, COMBO_END}; // DB_TOGG
 const uint16_t PROGMEM combo15[] = { KC_F3, KC_F5, KC_F7, COMBO_END}; // RGB_TOG
+const uint16_t PROGMEM combo15[] = { KC_F6, KC_F8, KC_F10, COMBO_END}; // RGB_MODE_FORWARD
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_LPRN),
@@ -127,6 +128,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo13, KC_BSPC),
     COMBO(combo14, DB_TOGG),
     COMBO(combo15, RGB_TOG),
+    COMBO(combo16, RGB_MODE_FORWARD),
 };
 
 
