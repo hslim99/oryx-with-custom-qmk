@@ -86,7 +86,7 @@ bool rgb_matrix_indicators_user(void) {
       return false;
   }
   if (keyboard_config.disable_layer_led) { return false; }
-  // set_layer_color(0);
+  set_layer_color(0);
   if (rgb_matrix_get_flags() == LED_FLAG_NONE)
     rgb_matrix_set_color_all(0, 0, 0);
   return true;
