@@ -111,6 +111,7 @@ const uint16_t PROGMEM combo14[] = { KC_F1, KC_F5, KC_F9, COMBO_END}; // DB_TOGG
 const uint16_t PROGMEM combo15[] = { KC_F3, KC_F5, KC_F7, COMBO_END}; // RGB_TOG
 const uint16_t PROGMEM combo16[] = { KC_F7, KC_F9, COMBO_END}; // RGB_MODE_FORWARD
 const uint16_t PROGMEM combo17[] = { KC_F4, KC_F6, COMBO_END}; // RGB_SLD
+const uint16_t PROGMEM combo18[] = { KC_V, KC_B, LT(2, KC_TAB), COMBO_END}; // arbitrary shortcut
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_LPRN),
@@ -131,6 +132,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo15, RGB_TOG),
     COMBO(combo16, RGB_MODE_FORWARD),
     COMBO(combo17, RGB_SLD),
+    COMBO(combo18, LGUI(LSFT(KC_F7))),
 };
 
 
