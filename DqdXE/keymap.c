@@ -132,7 +132,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo15, RGB_TOG),
     COMBO(combo16, RGB_MODE_FORWARD),
     COMBO(combo17, RGB_SLD),
-    COMBO(combo18, LGUI(LSFT(KC_F7))),
+    COMBO(combo18, LGUI(KC_F20)),
 };
 
 
