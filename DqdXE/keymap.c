@@ -113,6 +113,7 @@ const uint16_t PROGMEM combo16[] = { KC_F7, KC_F9, COMBO_END}; // RGB_MODE_FORWA
 const uint16_t PROGMEM combo17[] = { KC_F4, KC_F6, COMBO_END}; // RGB_SLD
 const uint16_t PROGMEM combo18[] = { KC_V, KC_B, LT(2, KC_TAB), COMBO_END}; // arbitrary shortcut
 const uint16_t PROGMEM combo19[] = { KC_N, KC_M, LT(5, KC_ENTER), COMBO_END}; // arbitrary shortcut
+const uint16_t PROGMEM combo20[] = { MT(MOD_LSFT, KC_S), MT(MOD_LALT, KC_G), COMBO_END}; // keyboard language change
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_LPRN),
@@ -135,6 +136,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo17, RGB_SLD),
     COMBO(combo18, RSFT(KC_F20)),
     COMBO(combo19, RSFT(KC_F21)),
+    COMBO(combo20, LALT(KC_LEFT_SHIFT)),
 };
 
 
