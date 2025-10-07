@@ -136,7 +136,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo17, RGB_SLD),
     COMBO(combo18, RSFT(KC_F20)),
     COMBO(combo19, RSFT(KC_F21)),
-    COMBO(combo20, LALT(KC_LEFT_SHIFT)),
+    COMBO(combo20, LSFT(KC_LEFT_ALT)),
 };
 
 
