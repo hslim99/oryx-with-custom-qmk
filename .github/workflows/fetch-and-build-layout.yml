@@ -91,6 +91,15 @@ jobs:
       - name: Build qmk docker image
         run: docker build -t qmk .
 
+      - name: Create secrets.h for passwords
+        run: |
+          cat <<EOF > ${{ github.event.inputs.layout_id }}/secrets.h
+          #pragma once
+          #define MY_PASSWORD_PERSONAL "${{ secrets.MY_PASSWORD_PERSONAL }}"
+          #define MY_PASSWORD_WORK "${{ secrets.MY_PASSWORD_WORK }}"
+          EOF
+          ls -l ${{ github.event.inputs.layout_id }}/secrets.h
+
       - name: Build the layout
         id: build-layout
         run: |
