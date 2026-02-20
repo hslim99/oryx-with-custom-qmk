@@ -177,7 +177,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef MY_PASSWORD_PERSONAL
             SEND_STRING(MY_PASSWORD_PERSONAL);
 #else
-            return false;
+            SEND_STRING("nothing is defined\n");
 #endif
         }
         return false;
