@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_NO,          KC_MEDIA_PREV_TRACK,KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_LEFT_SHIFT,  KC_LEFT_ALT,                                    KC_NO,          KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_NO,          KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_LEFT_SHIFT,  KC_LEFT_ALT,                                    KC_NO,          KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_NO,          KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_RIGHT_ALT,   
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_ENTER,       KC_BSPC
   ),
@@ -119,8 +119,8 @@ const uint16_t PROGMEM combo17[] = { KC_F4, KC_F6, COMBO_END}; // RGB_SLD
 const uint16_t PROGMEM combo18[] = { KC_V, KC_B, LT(2, KC_TAB), COMBO_END}; // arbitrary shortcut
 const uint16_t PROGMEM combo19[] = { KC_N, KC_M, LT(5, KC_ENTER), COMBO_END}; // arbitrary shortcut
 const uint16_t PROGMEM combo20[] = { MT(MOD_LSFT, KC_S), MT(MOD_LALT, KC_G), COMBO_END}; // keyboard language change
-const uint16_t PROGMEM combo21[] = { KC_E, KC_S, LT(2, KC_TAB), COMBO_END}; // password (personal)
-const uint16_t PROGMEM combo22[] = { KC_D, KC_X, LT(2, KC_TAB), COMBO_END}; // password (work)
+const uint16_t PROGMEM combo21[] = { KC_E, MT(MOD_LSFT, KC_S), LT(2, KC_TAB), COMBO_END}; // password (personal)
+const uint16_t PROGMEM combo22[] = { MT(MOD_LCTL, KC_D), KC_X, LT(2, KC_TAB), COMBO_END}; // password (work)
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_LPRN),
