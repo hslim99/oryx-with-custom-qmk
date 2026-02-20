@@ -162,6 +162,7 @@ uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     dprintf("KL: row: %u, column: %u, pressed: %u\n", record->event.key.row, record->event.key.col, record->event.pressed);
+    dprintf("keycode: %u\n", keycode);
     if (keycode == RGB_SLD) {
         if (rawhid_state.rgb_control) {
             return false;
