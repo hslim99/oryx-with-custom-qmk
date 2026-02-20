@@ -3,9 +3,14 @@
 #include "print.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
+#if __has_include("secrets.h")
+#include "secrets.h"
+#endif
 
 enum custom_keycodes {
-  RGB_SLD = ML_SAFE_RANGE
+  RGB_SLD = ML_SAFE_RANGE,
+  MY_PASSWORD_PERSONAL_KEYCODE,
+  MY_PASSWORD_WORK_KEYCODE
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -114,6 +119,8 @@ const uint16_t PROGMEM combo17[] = { KC_F4, KC_F6, COMBO_END}; // RGB_SLD
 const uint16_t PROGMEM combo18[] = { KC_V, KC_B, LT(2, KC_TAB), COMBO_END}; // arbitrary shortcut
 const uint16_t PROGMEM combo19[] = { KC_N, KC_M, LT(5, KC_ENTER), COMBO_END}; // arbitrary shortcut
 const uint16_t PROGMEM combo20[] = { MT(MOD_LSFT, KC_S), MT(MOD_LALT, KC_G), COMBO_END}; // keyboard language change
+const uint16_t PROGMEM combo21[] = { KC_E, KC_S, LT(2, KC_TAB), COMBO_END}; // password (personal)
+const uint16_t PROGMEM combo22[] = { KC_D, KC_X, LT(2, KC_TAB), COMBO_END}; // password (work)
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_LPRN),
@@ -137,6 +144,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo18, RSFT(KC_F20)),
     COMBO(combo19, RSFT(KC_F21)),
     COMBO(combo20, LSFT(KC_LEFT_ALT)),
+    COMBO(combo21, MY_PASSWORD_PERSONAL_KEYCODE),
+    COMBO(combo22, MY_PASSWORD_WORK_KEYCODE),
 };
 
 
@@ -159,6 +168,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         if (record->event.pressed) {
             rgblight_mode(1);
+        }
+        return false;
+    }
+    if (keycode == MY_PASSWORD_PERSONAL_KEYCODE) {
+        if (record->event.pressed) {
+#ifdef MY_PASSWORD_PERSONAL
+            SEND_STRING(MY_PASSWORD_PERSONAL);
+#else
+            return false;
+#endif
+        }
+        return false;
+    }
+    if (keycode == MY_PASSWORD_WORK_KEYCODE) {
+        if (record->event.pressed) {
+#ifdef MY_PASSWORD_WORK
+            SEND_STRING(MY_PASSWORD_WORK);
+#else
+            return false;
+#endif
         }
         return false;
     }
